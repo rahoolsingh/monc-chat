@@ -1,0 +1,251 @@
+import { Chat } from '../types';
+
+export const chats: Chat[] = [
+  {
+    id: '1',
+    contact: {
+      id: '1',
+      name: 'Cpf Anjani (Rohit) bhaiya',
+      avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150',
+      lastSeen: 'online',
+      isOnline: true
+    },
+    lastMessage: 'https://jb343d654-7117-4d6d-ac8d-dbe616afc592-00-7qivnll...',
+    lastMessageTime: '11:38 am',
+    unreadCount: 1,
+    messages: [
+      {
+        id: '1',
+        senderId: '1',
+        content: 'https://jb343d654-7117-4d6d-ac8d-dbe616afc592-00-7qivnll.spock.replit.dev/',
+        timestamp: '11:38 am',
+        delivered: true,
+        read: false,
+        type: 'link'
+      }
+    ]
+  },
+  {
+    id: '2',
+    contact: {
+      id: '2',
+      name: 'SBU Rohit (CC)',
+      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150',
+      lastSeen: 'last seen today at 1:58 pm',
+      isOnline: false
+    },
+    lastMessage: 'Online hai ye?',
+    lastMessageTime: '1:01 am',
+    unreadCount: 0,
+    messages: [
+      {
+        id: '1',
+        senderId: 'me',
+        content: 'https://tea-tokenizer.vercel.app/',
+        timestamp: '12:55 am',
+        delivered: true,
+        read: true,
+        type: 'link',
+        linkPreview: {
+          url: 'https://tea-tokenizer.vercel.app/',
+          title: 'Tea Tokenizer',
+          description: 'kon se model ka embedding use kr rhe ho'
+        }
+      },
+      {
+        id: '2',
+        senderId: '2',
+        content: 'Ohh',
+        timestamp: '12:56 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '3',
+        senderId: '2',
+        content: 'Acha h then',
+        timestamp: '12:56 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '4',
+        senderId: '2',
+        content: 'Back-end kaha deploy kiye ho',
+        timestamp: '12:57 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '5',
+        senderId: 'me',
+        content: 'Kisi ka nahi, custom banaya hua hai',
+        timestamp: '12:58 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '6',
+        senderId: 'me',
+        content: 'Dictionary ka use krke',
+        timestamp: '12:58 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '7',
+        senderId: '2',
+        content: 'Back-end kaha deploy kiye ho',
+        timestamp: '12:57 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '8',
+        senderId: 'me',
+        content: 'Render',
+        timestamp: '12:57 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '9',
+        senderId: '2',
+        content: 'Acha',
+        timestamp: '12:57 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '10',
+        senderId: 'me',
+        content: 'Aur cron job set kr diya hoon taki sleep me na jayega render',
+        timestamp: '12:57 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '11',
+        senderId: '2',
+        content: 'Acha shye h',
+        timestamp: '12:58 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '12',
+        senderId: '2',
+        content: 'www.ai-grand-challenge.in\nhttps://www.ai-grand-challenge.in/\nwww.ai-grand-challenge.in',
+        timestamp: '1:00 am',
+        delivered: true,
+        read: true,
+        type: 'link',
+        linkPreview: {
+          url: 'https://www.ai-grand-challenge.in/',
+          title: 'AI Grand Challenge',
+          description: ''
+        }
+      },
+      {
+        id: '13',
+        senderId: '2',
+        content: 'Han',
+        timestamp: '1:02 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      },
+      {
+        id: '14',
+        senderId: 'me',
+        content: 'Online hai ye?',
+        timestamp: '1:01 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      }
+    ]
+  },
+  {
+    id: '3',
+    contact: {
+      id: '3',
+      name: 'SBU Nikhil (Jr)',
+      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150',
+      lastSeen: 'last seen yesterday at 10:30 pm',
+      isOnline: false
+    },
+    lastMessage: 'Han',
+    lastMessageTime: '9:58 am',
+    unreadCount: 0,
+    messages: [
+      {
+        id: '1',
+        senderId: '3',
+        content: 'Han',
+        timestamp: '9:58 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      }
+    ]
+  },
+  {
+    id: '4',
+    contact: {
+      id: '4',
+      name: '+91 90316 54998',
+      avatar: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150',
+      lastSeen: 'last seen 2 days ago',
+      isOnline: false
+    },
+    lastMessage: '🏫 Srinath University – Fee Structure & Courses 🔗 Fee Details: ...',
+    lastMessageTime: '9:40 am',
+    unreadCount: 0,
+    messages: [
+      {
+        id: '1',
+        senderId: '4',
+        content: '🏫 Srinath University – Fee Structure & Courses 🔗 Fee Details: Complete fee breakdown available',
+        timestamp: '9:40 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      }
+    ]
+  },
+  {
+    id: '5',
+    contact: {
+      id: '5',
+      name: 'Nayan',
+      avatar: 'https://images.pexels.com/photos/1374510/pexels-photo-1374510.jpeg?auto=compress&cs=tinysrgb&w=150',
+      lastSeen: 'last seen yesterday at 11:45 pm',
+      isOnline: false
+    },
+    lastMessage: 'Uthaya nal or deal de raha h be',
+    lastMessageTime: '8:35 am',
+    unreadCount: 0,
+    messages: [
+      {
+        id: '1',
+        senderId: '5',
+        content: 'Uthaya nal or deal de raha h be',
+        timestamp: '8:35 am',
+        delivered: true,
+        read: true,
+        type: 'text'
+      }
+    ]
+  }
+];
