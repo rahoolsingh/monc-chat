@@ -19,6 +19,7 @@ async function main() {
     });
 
     console.log(response.choices[0].message.content);
+    console.log(response.choices[0].message.content.split("\n"));
 }
 
 main();
