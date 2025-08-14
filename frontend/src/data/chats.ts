@@ -50,11 +50,6 @@ export const chats: Chat[] = [
                 delivered: true,
                 read: true,
                 type: "link",
-                linkPreview: {
-                    url: "https://tea-tokenizer.vercel.app/",
-                    title: "Tea Tokenizer",
-                    description: "kon se model ka embedding use kr rhe ho",
-                },
             },
             {
                 id: "2",
@@ -156,11 +151,6 @@ export const chats: Chat[] = [
                 delivered: true,
                 read: true,
                 type: "link",
-                linkPreview: {
-                    url: "https://www.ai-grand-challenge.in/",
-                    title: "AI Grand Challenge",
-                    description: "",
-                },
             },
             {
                 id: "13",
