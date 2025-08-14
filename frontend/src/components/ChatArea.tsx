@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { Chat, Message } from "../types";
 import { MessageBubble } from "./MessageBubble";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 interface ChatAreaProps {
     chat: Chat | null;
@@ -120,7 +122,7 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
                         </div>
                     </div>
 
-                    <div className="flex items-center space-x-2">
+                    {/* <div className="flex items-center space-x-2">
                         <button className="p-2 hover:bg-[#374248] rounded-full transition-colors">
                             <Video className="w-5 h-5 text-[#AEBAC1]" />
                         </button>
@@ -133,7 +135,7 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
                         <button className="p-2 hover:bg-[#374248] rounded-full transition-colors">
                             <MoreVertical className="w-5 h-5 text-[#AEBAC1]" />
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
@@ -150,14 +152,14 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
             {/* Input area */}
             <div className="bg-[#202C33] p-4">
                 <div className="flex items-end space-x-3 max-w-4xl mx-auto">
-                    <button className="p-2 hover:bg-[#374248] rounded-full transition-colors">
+                    {/* <button className="p-2 hover:bg-[#374248] rounded-full transition-colors">
                         <Smile className="w-6 h-6 text-[#AEBAC1]" />
                     </button>
                     <button className="p-2 hover:bg-[#374248] rounded-full transition-colors">
                         <Paperclip className="w-6 h-6 text-[#AEBAC1]" />
-                    </button>
+                    </button> */}
 
-                    <div className="flex-1 bg-[#2A3942] rounded-lg px-4 py-2">
+                    <div className="flex-1 bg-[#2A3942] rounded-full px-4 py-2">
                         <input
                             type="text"
                             placeholder="Type a message"
@@ -171,13 +173,16 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
                     {messageInput.trim() ? (
                         <button
                             onClick={handleSendMessage}
-                            className="p-2 bg-[#ff5e00] hover:bg-[#00916A] rounded-full transition-colors"
+                            className="p-2 rounded-full transition-colors flex items-center justify-center"
                         >
-                            <Send className="w-6 h-6 text-white" />
+                            <FontAwesomeIcon
+                                icon={faPaperPlane}
+                                className="w-6 h-6 text-[#8696A0] hover:text-[#ff5e00] rotate-45"
+                            />
                         </button>
                     ) : (
                         <button className="p-2 hover:bg-[#374248] rounded-full transition-colors">
-                            <Mic className="w-6 h-6 text-[#AEBAC1]" />
+                            {/* <Mic className="w-6 h-6 text-[#AEBAC1]" /> */}
                         </button>
                     )}
                 </div>
