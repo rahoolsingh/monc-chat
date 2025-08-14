@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-    Search,
-    Menu,
-    MessageCircle,
-    MoreVertical,
-    Sticker,
-    Coffee,
-    Linkedin,
-} from "lucide-react";
+import { Search, Sticker } from "lucide-react";
 import { ChatItem } from "./ChatItem";
 import { chats } from "../data/chats";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,7 +27,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     const [searchQuery, setSearchQuery] = useState("");
     const [activeFilter, setActiveFilter] = useState("All");
 
-    const filters = ["All", "Unread", "Favourites", "Groups"];
+    const filters = ["All", "Featured"];
 
     const filteredChats = chats.filter((chat) => {
         const matchesSearch =
@@ -44,8 +36,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 .includes(searchQuery.toLowerCase()) ||
             chat.lastMessage.toLowerCase().includes(searchQuery.toLowerCase());
 
-        if (activeFilter === "Unread") {
-            return matchesSearch && chat.unreadCount > 0;
+        if (activeFilter === "Featured") {
+            return matchesSearch && chat.isFeatured;
         }
 
         return matchesSearch;

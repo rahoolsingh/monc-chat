@@ -28,4 +28,5 @@ export interface Chat {
   lastMessageTime: string;
   unreadCount: number;
   messages: Message[];
+  isFeatured: boolean;
 }
