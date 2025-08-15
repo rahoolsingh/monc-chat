@@ -176,22 +176,6 @@ npm run build      # Build for production
 npm run preview    # Preview production build
 ```
 
-## 🎭 Available Personas
-
-### Hitesh Choudhary
-
--   **Channel**: Chai aur Code
--   **Specialty**: Full-stack development, React, JavaScript
--   **Style**: Hindi-English mix, "Haanji", chai references
-
-### Piyush Garg
-
--   **Channel**: Piyush Garg Dev
--   **Specialty**: Modern web development, system design
--   **Style**: Professional, industry-focused approach
-
-_More personas coming soon!_
-
 ## 🔒 Environment Variables
 
 ### Backend (.env)
@@ -200,7 +184,6 @@ _More personas coming soon!_
 OPENAI_API_KEY=your_openai_api_key_here
 PORT=3001
 FRONTEND_URL=http://localhost:5173
-NODE_ENV=development
 ```
 
 ### Frontend (.env)
