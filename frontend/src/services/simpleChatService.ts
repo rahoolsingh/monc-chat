@@ -1,7 +1,7 @@
 import { ChatMessage } from "../types";
 
 const API_BASE_URL =
-    import.meta.env.REACT_APP_API_URL || "http://localhost:3001";
+    import.meta.env.VITE_BACKEND_URL;
 
 /**
  * Simple chat service that handles message sending and response splitting

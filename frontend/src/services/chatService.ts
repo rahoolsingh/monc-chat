@@ -73,7 +73,7 @@ export class ChatService {
 
             // Create EventSource for streaming response
             const url = `${
-                import.meta.env.REACT_APP_API_URL || "http://localhost:3001"
+                import.meta.env.VITE_BACKEND_URL
             }/api/chat/${personaId}`;
 
             // Close existing connection if any

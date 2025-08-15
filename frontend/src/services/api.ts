@@ -2,7 +2,7 @@ import { ApiResponse } from "../types";
 
 // API Configuration
 const API_BASE_URL =
-    import.meta.env.REACT_APP_API_URL || "http://localhost:3001";
+    import.meta.env.VITE_BACKEND_URL;
 const API_TIMEOUT = 10000; // 10 seconds
 
 // Custom error class for API errors
