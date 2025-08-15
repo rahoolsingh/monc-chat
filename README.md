@@ -211,3 +211,5 @@ REACT_APP_API_URL=http://localhost:3001
 **Made with ❤️ by [Veer Rajpoot](https://veerrajpoot.com)**
 
 _Don't forget to ⭐ star this repository if you found it helpful!_
+
+<img src="https://github.com/rahoolsingh/monc-chat/blob/main/frontend/src/assets/logo-full.png?raw=true">
