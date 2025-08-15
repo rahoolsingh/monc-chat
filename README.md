@@ -1,5 +1,7 @@
 # Monc Chat - AI Persona Based Chat Application
 
+<img src="https://github.com/rahoolsingh/monc-chat/blob/main/screenshot2.png?raw=true">
+
 A chatApp styled application that lets you interact with AI personas based on popular tech influencers and creators. Chat with AI versions of Hitesh Choudhary, Piyush Garg, and more!
 
 ## 🌐 Live Demo
