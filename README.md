@@ -14,25 +14,11 @@ A chatApp styled application that lets you interact with AI personas based on po
 -   📱 **Responsive Design**: WhatsApp-style interface that works on all devices
 -   ⚡ **Fast & Modern**: Built with React, TypeScript, and Express
 
-## 🏗️ Tech Stack
-
-### Frontend
-
--   **React** with TypeScript
--   **Tailwind CSS** for styling
--   **Lucide React** for icons
--   **Font Awesome** for additional icons
-
-### Backend
-
--   **Node.js** with Express
--   **OpenAI API** for AI responses
-
 ## 🚀 Quick Start
 
 ### Prerequisites
 
--   Node.js (v16 or higher)
+-   Node.js (v20 or higher)
 -   npm or pnpm
 -   OpenAI API key
 
@@ -56,9 +42,6 @@ pnpm install
 
 # Create environment file
 cp .env.example .env
-
-# Add your OpenAI API key to .env
-echo "OPENAI_API_KEY=your_openai_api_key_here" >> .env
 ```
 
 **Environment Variables:**
@@ -67,7 +50,6 @@ echo "OPENAI_API_KEY=your_openai_api_key_here" >> .env
 OPENAI_API_KEY=your_openai_api_key_here
 PORT=3001
 FRONTEND_URL=http://localhost:5173
-NODE_ENV=development
 ```
 
 ### 3. Frontend Setup
@@ -107,7 +89,7 @@ pnpm dev
 # In frontend directory
 npm run dev
 # or
-pnpm run dev
+pnpm dev
 ```
 
 The application will be available at:
