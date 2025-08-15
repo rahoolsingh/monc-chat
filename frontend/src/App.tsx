@@ -1,15 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { Sidebar } from "./components/Sidebar";
 import { ChatArea } from "./components/ChatArea";
-import { chats } from "./data/chats";
+import { Persona } from "./types";
+import { getPersonaById } from "./services/personaService";
+import {
+    getSelectedPersona,
+    setSelectedPersona,
+} from "./services/localStorageService";
 
 function App() {
-    const [selectedChatId, setSelectedChatId] = useState<string | null>(""); // Default to SBU Rohit chat
+    const [selectedPersonaId, setSelectedPersonaId] = useState<string | null>(
+        null
+    );
+    const [selectedPersona, setSelectedPersonaState] = useState<Persona | null>(
+        null
+    );
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    const selectedChat = selectedChatId
-        ? chats.find((chat) => chat.id === selectedChatId)
-        : null;
+    // Load selected persona from localStorage on app start
+    useEffect(() => {
+        const savedPersonaId = getSelectedPersona();
+        if (savedPersonaId) {
+            handleSelectPersona(savedPersonaId);
+        }
+    }, []);
+
+    // Handle persona selection
+    const handleSelectPersona = async (personaId: string) => {
+        try {
+            setSelectedPersonaId(personaId);
+            setSelectedPersona(personaId); // Save to localStorage
+
+            // Fetch persona details
+            const persona = await getPersonaById(personaId);
+            setSelectedPersonaState(persona);
+        } catch (error) {
+            console.error("Error selecting persona:", error);
+            // Keep the selection but show error in ChatArea
+            setSelectedPersonaState(null);
+        }
+    };
 
     // Close sidebar when window resizes to desktop
     useEffect(() => {
@@ -26,13 +56,14 @@ function App() {
     return (
         <div className="h-screen flex bg-[#111B21] overflow-hidden">
             <Sidebar
-                selectedChatId={selectedChatId}
-                onSelectChat={setSelectedChatId}
+                selectedPersonaId={selectedPersonaId}
+                onSelectPersona={handleSelectPersona}
                 isOpen={sidebarOpen}
                 onToggle={() => setSidebarOpen(!sidebarOpen)}
             />
             <ChatArea
-                chat={selectedChat || null}
+                persona={selectedPersona}
+                personaId={selectedPersonaId}
                 onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
             />
         </div>

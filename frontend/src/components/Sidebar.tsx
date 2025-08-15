@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Search, Sticker } from "lucide-react";
-import { ChatItem } from "./ChatItem";
-import { chats } from "../data/chats";
+import React, { useState, useEffect } from "react";
+import { Search, Sticker, AlertCircle, RefreshCw } from "lucide-react";
+import { PersonaItem } from "./PersonaItem";
+import { Persona } from "../types";
+import { fetchPersonas } from "../services/personaService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faGithub,
@@ -12,32 +13,57 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { faMugHot } from "@fortawesome/free-solid-svg-icons/faMugHot";
 
 interface SidebarProps {
-    selectedChatId: string | null;
-    onSelectChat: (chatId: string) => void;
+    selectedPersonaId: string | null;
+    onSelectPersona: (personaId: string) => void;
     isOpen: boolean;
     onToggle: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-    selectedChatId,
-    onSelectChat,
+    selectedPersonaId,
+    onSelectPersona,
     isOpen,
     onToggle,
 }) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [activeFilter, setActiveFilter] = useState("All");
+    const [personas, setPersonas] = useState<Persona[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-    const filters = ["All", "Featured"];
+    const filters = ["All", "Online"];
 
-    const filteredChats = chats.filter((chat) => {
+    // Load personas on component mount
+    useEffect(() => {
+        loadPersonas();
+    }, []);
+
+    const loadPersonas = async (forceRefresh: boolean = false) => {
+        try {
+            setLoading(true);
+            setError(null);
+
+            const fetchedPersonas = await fetchPersonas(forceRefresh);
+            setPersonas(fetchedPersonas);
+        } catch (err) {
+            console.error("Error loading personas:", err);
+            setError(
+                err instanceof Error ? err.message : "Failed to load personas"
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const filteredPersonas = personas.filter((persona) => {
         const matchesSearch =
-            chat.contact.name
+            persona.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            persona.description
                 .toLowerCase()
-                .includes(searchQuery.toLowerCase()) ||
-            chat.lastMessage.toLowerCase().includes(searchQuery.toLowerCase());
+                .includes(searchQuery.toLowerCase());
 
-        if (activeFilter === "Featured") {
-            return matchesSearch && chat.isFeatured;
+        if (activeFilter === "Online") {
+            return matchesSearch && persona.isOnline;
         }
 
         return matchesSearch;
@@ -80,7 +106,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#AEBAC1]" />
                         <input
                             type="text"
-                            placeholder="Search or start a new chat"
+                            placeholder="Search personas..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full bg-[#202C33] text-white pl-10 pr-4 py-2 rounded-lg border-none outline-none focus:bg-[#2A3942] transition-colors"
@@ -105,22 +131,57 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     ))}
                 </div>
 
-                {/* Chat list */}
+                {/* Persona list */}
                 <div className="flex-1 overflow-y-auto">
-                    {filteredChats.map((chat) => (
-                        <ChatItem
-                            key={chat.id}
-                            chat={chat}
-                            isSelected={selectedChatId === chat.id}
-                            onClick={() => {
-                                onSelectChat(chat.id);
-                                // Close sidebar on mobile after selection
-                                if (window.innerWidth < 768) {
-                                    onToggle();
-                                }
-                            }}
-                        />
-                    ))}
+                    {loading ? (
+                        <div className="flex items-center justify-center p-8">
+                            <RefreshCw className="w-6 h-6 text-[#AEBAC1] animate-spin" />
+                            <span className="text-[#AEBAC1] ml-2">
+                                Loading personas...
+                            </span>
+                        </div>
+                    ) : error ? (
+                        <div className="p-4">
+                            <div className="flex items-center text-red-400 mb-2">
+                                <AlertCircle className="w-5 h-5 mr-2" />
+                                <span className="text-sm">
+                                    Failed to load personas
+                                </span>
+                            </div>
+                            <p className="text-[#8696A0] text-xs mb-3">
+                                {error}
+                            </p>
+                            <button
+                                onClick={() => loadPersonas(true)}
+                                className="text-[#ff5e00] text-sm hover:underline"
+                            >
+                                Try again
+                            </button>
+                        </div>
+                    ) : filteredPersonas.length === 0 ? (
+                        <div className="p-4 text-center">
+                            <p className="text-[#8696A0] text-sm">
+                                {searchQuery
+                                    ? "No personas found"
+                                    : "No personas available"}
+                            </p>
+                        </div>
+                    ) : (
+                        filteredPersonas.map((persona) => (
+                            <PersonaItem
+                                key={persona.id}
+                                persona={persona}
+                                isSelected={selectedPersonaId === persona.id}
+                                onClick={() => {
+                                    onSelectPersona(persona.id);
+                                    // Close sidebar on mobile after selection
+                                    if (window.innerWidth < 768) {
+                                        onToggle();
+                                    }
+                                }}
+                            />
+                        ))
+                    )}
                 </div>
 
                 {/* Get WhatsApp for Mac */}
@@ -159,7 +220,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             </a>
                             <span className="flex space-x-2">
                                 <a
-                                    href="https://www.linkedin.com/in/cosmonaut.dev/"
+                                    href="https://www.linkedin.com/in/rahoolsingh/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center hover:text-[#ff5e00] transition-colors"
