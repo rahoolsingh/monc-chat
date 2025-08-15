@@ -202,7 +202,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     onClick={() => {
                         clearEverything();
                     }}
-                    className="text-[#ff5e00] text-sm hover:underline"
+                    className="text-[#ff5e00] text-sm hover:underline my-2"
                 >
                     Reset Everything
                 </button>
