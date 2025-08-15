@@ -510,23 +510,18 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
                         />
                     </div>
 
-                    {messageInput.trim() && !isLoading ? (
-                        <button
-                            onClick={handleSendMessage}
-                            disabled={!persona}
-                            className="p-2 rounded-full transition-colors flex items-center justify-center disabled:opacity-50 hover:bg-[#374248]"
-                            title="Send message (Enter)"
-                        >
-                            <FontAwesomeIcon
-                                icon={faPaperPlane}
-                                className="w-6 h-6 text-[#8696A0] hover:text-[#ff5e00] rotate-45 transition-colors"
-                            />
-                        </button>
-                    ) : (
-                        <div className="p-2 w-10">
-                            {/* Empty space to maintain layout */}
-                        </div>
-                    )}
+                    {/* {messageInput.trim() && !isLoading ? ( */}
+                    <button
+                        onClick={handleSendMessage}
+                        disabled={!persona}
+                        className="p-2 rounded-full transition-colors flex items-center justify-center disabled:opacity-50 hover:bg-[#374248]"
+                        title="Send message (Enter)"
+                    >
+                        <FontAwesomeIcon
+                            icon={faPaperPlane}
+                            className="w-6 h-6 text-[#8696A0] hover:text-[#ff5e00] rotate-45 transition-colors"
+                        />
+                    </button>
                 </div>
 
                 {/* Helpful hint */}
