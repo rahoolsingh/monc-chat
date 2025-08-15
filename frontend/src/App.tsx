@@ -12,7 +12,7 @@ function App() {
     const [selectedPersona, setSelectedPersonaState] = useState<Persona | null>(
         null
     );
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [sidebarOpen, setSidebarOpen] = useState(true);
 
 
 

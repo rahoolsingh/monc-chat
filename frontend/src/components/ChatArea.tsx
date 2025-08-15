@@ -9,7 +9,7 @@ import {
 } from "../services/localStorageService";
 import { sendMessageSimple } from "../services/simpleChatService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/logo.png";
 
 interface ChatAreaProps {
@@ -49,35 +49,53 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
 
     if (!persona && !personaId) {
         return (
-            <div className="flex-1 bg-[#0B141A] flex items-center justify-center">
-                <div className="text-center">
-                    <div className="w-24 h-24 flex items-center justify-center mx-auto">
-                        <img
-                            src={logo}
-                            alt="Monc Chat Logo"
-                            className="w-full h-full object-contain"
-                        />
+            <div className="flex-1  flex flex-col w-full items-center justify-center ">
+                <div className="bg-[#202C33] px-4 py-3 border-b border-[#2A3942] w-full">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                            {/* Mobile menu button */}
+                            <button
+                                onClick={onToggleSidebar}
+                                className="md:hidden p-2 hover:bg-[#374248] rounded-full transition-colors mr-2"
+                            >
+                                <FontAwesomeIcon
+                                    icon={faBars}
+                                    className="w-6 h-6 text-[#AEBAC1]"
+                                />
+                            </button>
+                        </div>
                     </div>
-                    <h2 className="text-2xl font-light text-[#E9EDEF] mb-2">
-                        Monc Chat
-                    </h2>
-                    <p className="text-[#8696A0] max-w-md">
-                        Chat with your favourite influencers and creators!
-                        <br />
-                        Select any user from the sidebar to start chatting.
-                    </p>
-                    <p className="text-xs text-[#8696A0] mt-4">
-                        <a
-                            href="https://payments.cashfree.com/forms/veer"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#AEBAC1] hover:underline"
-                        >
-                            Don't forget to buy me a{" "}
-                            <Coffee className="inline w-4 h-4" /> if you enjoy
-                            the experience!
-                        </a>
-                    </p>
+                </div>
+                <div className="flex-1 bg-[#0B141A] flex items-center justify-center w-full">
+                    <div className="text-center">
+                        <div className="w-24 h-24 flex items-center justify-center mx-auto">
+                            <img
+                                src={logo}
+                                alt="Monc Chat Logo"
+                                className="w-full h-full object-contain"
+                            />
+                        </div>
+                        <h2 className="text-2xl font-light text-[#E9EDEF] mb-2">
+                            Monc Chat
+                        </h2>
+                        <p className="text-[#8696A0] max-w-md">
+                            Chat with your favourite influencers and creators!
+                            <br />
+                            Select any user from the sidebar to start chatting.
+                        </p>
+                        <p className="text-xs text-[#8696A0] mt-4">
+                            <a
+                                href="https://payments.cashfree.com/forms/veer"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[#AEBAC1] hover:underline"
+                            >
+                                Don't forget to buy me a{" "}
+                                <Coffee className="inline w-4 h-4" /> if you
+                                enjoy the experience!
+                            </a>
+                        </p>
+                    </div>
                 </div>
             </div>
         );
@@ -168,19 +186,10 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
                             onClick={onToggleSidebar}
                             className="md:hidden p-2 hover:bg-[#374248] rounded-full transition-colors mr-2"
                         >
-                            <svg
+                            <FontAwesomeIcon
+                                icon={faBars}
                                 className="w-6 h-6 text-[#AEBAC1]"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
-                            </svg>
+                            />
                         </button>
 
                         {persona ? (
