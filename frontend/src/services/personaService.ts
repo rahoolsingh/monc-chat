@@ -19,10 +19,8 @@ export const clearPersonasCache = (): void => {
     cacheTimestamp = 0;
 };
 
-/**
- * Fetch all available personas from the backend
- * Implements caching to reduce API calls
- */
+// Fetch all available personas from the backend
+
 export const fetchPersonas = async (
     forceRefresh: boolean = false
 ): Promise<Persona[]> => {
@@ -62,10 +60,7 @@ export const fetchPersonas = async (
     }
 };
 
-/**
- * Fetch detailed information for a specific persona
- * Includes system prompt for AI context
- */
+//  Fetch detailed information for a specific persona
 export const fetchPersonaDetails = async (
     personaId: string
 ): Promise<Persona> => {
@@ -92,9 +87,8 @@ export const fetchPersonaDetails = async (
     }
 };
 
-/**
- * Check if a persona exists in the cached data
- */
+//  Check if a persona exists in the cached data
+
 export const isPersonaValid = async (personaId: string): Promise<boolean> => {
     try {
         const personas = await fetchPersonas();
@@ -105,9 +99,7 @@ export const isPersonaValid = async (personaId: string): Promise<boolean> => {
     }
 };
 
-/**
- * Get persona by ID from cache or API
- */
+// Get persona by ID from cache or API
 export const getPersonaById = async (
     personaId: string
 ): Promise<Persona | null> => {
@@ -128,10 +120,7 @@ export const getPersonaById = async (
     }
 };
 
-/**
- * Preload personas data for better UX
- * Can be called on app initialization
- */
+//  Preload personas data for better UX
 export const preloadPersonas = async (): Promise<void> => {
     try {
         await fetchPersonas();
