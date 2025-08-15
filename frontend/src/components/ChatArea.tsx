@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Sticker, Coffee, AlertCircle, Trash } from "lucide-react";
+import { Coffee, AlertCircle, Trash } from "lucide-react";
 import { Persona, ChatMessage } from "../types";
 import { ChatMessageBubble } from "./ChatMessageBubble";
 import {
@@ -10,6 +10,7 @@ import {
 import { sendMessageSimple } from "../services/simpleChatService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import logo from "../assets/logo.png";
 
 interface ChatAreaProps {
     persona: Persona | null;
@@ -51,16 +52,19 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
             <div className="flex-1 bg-[#0B141A] flex items-center justify-center">
                 <div className="text-center">
                     <div className="w-24 h-24 flex items-center justify-center mx-auto">
-                        <Sticker className="w-12 h-12 text-[#AEBAC1]" />
+                        <img
+                            src={logo}
+                            alt="Monc Chat Logo"
+                            className="w-full h-full object-contain"
+                        />
                     </div>
                     <h2 className="text-2xl font-light text-[#E9EDEF] mb-2">
                         Monc Chat
                     </h2>
                     <p className="text-[#8696A0] max-w-md">
-                        Chat with AI personas based on your favorite influencers
-                        and creators!
+                        Chat with your favourite influencers and creators!
                         <br />
-                        Select a persona from the sidebar to start chatting.
+                        Select any user from the sidebar to start chatting.
                     </p>
                     <p className="text-xs text-[#8696A0] mt-4">
                         <a

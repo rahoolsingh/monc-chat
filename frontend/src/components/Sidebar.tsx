@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Search, Sticker, AlertCircle, RefreshCw } from "lucide-react";
+import { Search, AlertCircle, RefreshCw } from "lucide-react";
 import { PersonaItem } from "./PersonaItem";
 import { Persona } from "../types";
 import { fetchPersonas } from "../services/personaService";
@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { faMugHot } from "@fortawesome/free-solid-svg-icons/faMugHot";
+import logo from "../assets/logo.png";
 
 interface SidebarProps {
     selectedPersonaId: string | null;
@@ -55,6 +56,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
         }
     };
 
+    const clearEverything = () => {
+        // clear localStorage
+        localStorage.clear();
+        window.location.reload();
+    };
+
     const filteredPersonas = personas.filter((persona) => {
         const matchesSearch =
             persona.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -91,12 +98,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 {/* Header */}
                 <div className="flex items-center justify-between p-4 bg-[#202C33]">
                     <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-[#ff5e00] rounded-full flex items-center justify-center">
-                            <Sticker className="w-6 h-6 text-white" />
+                        <div className="h-10 flex items-center justify-center">
+                            <img
+                                src={logo}
+                                alt="Monc Chat Logo"
+                                className="w-full h-full object-contain"
+                            />
                         </div>
-                        <span className="text-white font-medium text-lg">
+                        <p className="text-white font-bold text-lg">
                             Monc Chat
-                        </span>
+                            <span className="text-[#ff5e00] text-xs block font-normal">
+                                Chat with your favorites
+                            </span>
+                        </p>
                     </div>
                 </div>
 
@@ -183,76 +197,87 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         ))
                     )}
                 </div>
+                {/* clear localStorage */}
+                <button
+                    onClick={() => {
+                        clearEverything();
+                    }}
+                    className="text-[#ff5e00] text-sm hover:underline"
+                >
+                    Reset Everything
+                </button>
 
                 {/* Get WhatsApp for Mac */}
-                <div className="p-4 border-t border-[#2A3942]">
-                    <div className="p-3 bg-[#202C33] rounded-lg hover:bg-[#2A3942] transition-colors">
-                        <p className="text-[#AEBAC1] text-sm">
-                            An AI Persona Based Chat Application
-                        </p>
-                        <p className="text-[#AEBAC1] text-xs">
-                            made with ❤️ by{" "}
-                            <a
-                                href="https://veerrajpoot.com"
-                                target="_blank"
-                                className="text-[#ff5e00] font-medium"
-                            >
-                                Veer Rajpoot
-                            </a>
-                        </p>
-                        <div className="flex text-[#AEBAC1] justify-between items-center mt-2">
-                            <a
-                                href="https://payments.cashfree.com/forms/veer"
-                                target="_blank"
-                                className="flex items-center text-[#AEBAC1] mt-2 w-fit group hover:text-[#ff5e00] transition-colors"
-                            >
-                                <span className=" text-xs mr-1">
-                                    Give me a coffee
+                <div>
+                    <div className="p-4 border-t border-[#2A3942]">
+                        <div className="p-3 bg-[#202C33] rounded-lg hover:bg-[#2A3942] transition-colors">
+                            <p className="text-[#AEBAC1] text-sm">
+                                An AI Persona Based Chat Application
+                            </p>
+                            <p className="text-[#AEBAC1] text-xs">
+                                made with ❤️ by{" "}
+                                <a
+                                    href="https://veerrajpoot.com"
+                                    target="_blank"
+                                    className="text-[#ff5e00] font-medium"
+                                >
+                                    Veer Rajpoot
+                                </a>
+                            </p>
+                            <div className="flex text-[#AEBAC1] justify-between items-center mt-2">
+                                <a
+                                    href="https://payments.cashfree.com/forms/veer"
+                                    target="_blank"
+                                    className="flex items-center text-[#AEBAC1] mt-2 w-fit group hover:text-[#ff5e00] transition-colors"
+                                >
+                                    <span className=" text-xs mr-1">
+                                        Give me a coffee
+                                    </span>
+                                    <FontAwesomeIcon
+                                        icon={faMugHot}
+                                        className="h-4 w-fit text-xs hidden group-hover:inline-block"
+                                    />
+                                    <FontAwesomeIcon
+                                        icon={faCoffee}
+                                        className="h-4 w-fit text-xs inline-block group-hover:hidden"
+                                    />
+                                </a>
+                                <span className="flex space-x-2">
+                                    <a
+                                        href="https://www.linkedin.com/in/rahoolsingh/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center hover:text-[#ff5e00] transition-colors"
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={faLinkedin}
+                                            className="inline-block  text-xs h-4 w-fit"
+                                        />
+                                    </a>
+                                    <a
+                                        href="https://github.com/rahoolsingh"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center hover:text-[#ff5e00] transition-colors"
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={faGithub}
+                                            className="inline-block  text-xs h-4 w-fit"
+                                        />
+                                    </a>
+                                    <a
+                                        href="https://x.com/cosmonaut_dev"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center hover:text-[#ff5e00] transition-colors"
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={faSquareXTwitter}
+                                            className="inline-block  text-xs h-4 w-fit"
+                                        />
+                                    </a>
                                 </span>
-                                <FontAwesomeIcon
-                                    icon={faMugHot}
-                                    className="h-4 w-fit text-xs hidden group-hover:inline-block"
-                                />
-                                <FontAwesomeIcon
-                                    icon={faCoffee}
-                                    className="h-4 w-fit text-xs inline-block group-hover:hidden"
-                                />
-                            </a>
-                            <span className="flex space-x-2">
-                                <a
-                                    href="https://www.linkedin.com/in/rahoolsingh/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center hover:text-[#ff5e00] transition-colors"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faLinkedin}
-                                        className="inline-block  text-xs h-4 w-fit"
-                                    />
-                                </a>
-                                <a
-                                    href="https://github.com/rahoolsingh"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center hover:text-[#ff5e00] transition-colors"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faGithub}
-                                        className="inline-block  text-xs h-4 w-fit"
-                                    />
-                                </a>
-                                <a
-                                    href="https://x.com/cosmonaut_dev"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center hover:text-[#ff5e00] transition-colors"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faSquareXTwitter}
-                                        className="inline-block  text-xs h-4 w-fit"
-                                    />
-                                </a>
-                            </span>
+                            </div>
                         </div>
                     </div>
                 </div>

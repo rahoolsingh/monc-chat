@@ -3,10 +3,7 @@ import { Sidebar } from "./components/Sidebar";
 import { ChatArea } from "./components/ChatArea";
 import { Persona } from "./types";
 import { getPersonaById } from "./services/personaService";
-import {
-    getSelectedPersona,
-    setSelectedPersona,
-} from "./services/localStorageService";
+
 
 function App() {
     const [selectedPersonaId, setSelectedPersonaId] = useState<string | null>(
@@ -17,19 +14,12 @@ function App() {
     );
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    // Load selected persona from localStorage on app start
-    useEffect(() => {
-        const savedPersonaId = getSelectedPersona();
-        if (savedPersonaId) {
-            handleSelectPersona(savedPersonaId);
-        }
-    }, []);
+
 
     // Handle persona selection
     const handleSelectPersona = async (personaId: string) => {
         try {
             setSelectedPersonaId(personaId);
-            setSelectedPersona(personaId); // Save to localStorage
 
             // Fetch persona details
             const persona = await getPersonaById(personaId);

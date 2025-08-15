@@ -3,7 +3,6 @@ import { ChatMessage, ChatHistory } from "../types";
 // Storage keys
 const STORAGE_KEYS = {
     CHAT_HISTORY: "monc_chat_history",
-    SELECTED_PERSONA: "monc_selected_persona",
     USER_PREFERENCES: "monc_user_preferences",
 } as const;
 
@@ -186,8 +185,7 @@ export const saveChatHistory = (
 
         const success = saveAllChatHistories(histories);
 
-        if (success) {
-        } else {
+        if (!success) {
             console.error(
                 `Failed to save chat history for persona: ${personaId}`
             );
@@ -229,9 +227,6 @@ export const clearChatHistory = (personaId: string): boolean => {
             delete histories[personaId];
             const success = saveAllChatHistories(histories);
 
-            if (success) {
-            }
-
             return success;
         }
 
@@ -256,20 +251,6 @@ export const getLastMessage = (personaId: string): ChatMessage | null => {
 };
 
 /**
- * Get selected persona ID
- */
-export const getSelectedPersona = (): string | null => {
-    return safeGetItem(STORAGE_KEYS.SELECTED_PERSONA);
-};
-
-/**
- * Save selected persona ID
- */
-export const setSelectedPersona = (personaId: string): boolean => {
-    return safeSetItem(STORAGE_KEYS.SELECTED_PERSONA, personaId);
-};
-
-/**
  * Clear all chat data (for reset/logout)
  */
 export const clearAllChatData = (): boolean => {
@@ -277,7 +258,6 @@ export const clearAllChatData = (): boolean => {
         if (!isLocalStorageAvailable()) return false;
 
         localStorage.removeItem(STORAGE_KEYS.CHAT_HISTORY);
-        localStorage.removeItem(STORAGE_KEYS.SELECTED_PERSONA);
 
         return true;
     } catch (error) {
