@@ -44,7 +44,7 @@ function App() {
     }, []);
 
     return (
-        <div className="h-screen flex bg-[#111B21] overflow-hidden">
+        <div className="h-dvh flex bg-[#111B21] overflow-hidden">
             <Sidebar
                 selectedPersonaId={selectedPersonaId}
                 onSelectPersona={handleSelectPersona}
