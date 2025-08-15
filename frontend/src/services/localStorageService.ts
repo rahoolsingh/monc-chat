@@ -21,7 +21,7 @@ const isLocalStorageAvailable = (): boolean => {
         localStorage.removeItem(testKey);
         return true;
     } catch (error) {
-        console.warn("⚠️ localStorage is not available:", error);
+        console.warn("localStorage is not available:", error);
         return false;
     }
 };

@@ -178,7 +178,7 @@ export class ChatService {
                                 }
                             } catch (parseError) {
                                 console.warn(
-                                    "⚠️ Failed to parse SSE data:",
+                                    "Failed to parse SSE data:",
                                     line
                                 );
                             }

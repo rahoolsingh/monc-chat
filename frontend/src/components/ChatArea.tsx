@@ -26,8 +26,10 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [currentAIMessage, setCurrentAIMessage] = useState<string>("");
+    const [, setCurrentAIMessage] = useState<string>("");
     const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    const messageInputRef = useRef<HTMLInputElement>(null);
 
     // Load chat history when persona changes
     useEffect(() => {
@@ -146,6 +148,8 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
         if (e.key === "Enter" && !e.shiftKey) {
             e.preventDefault();
             handleSendMessage();
+            // focus message input
+            messageInputRef.current?.focus();
         }
     };
 
@@ -210,7 +214,7 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
                                         Loading...
                                     </h3>
                                     <p className="text-[#AEBAC1] text-sm">
-                                        Fetching persona details
+                                        Fetching details
                                     </p>
                                 </div>
                             </div>
@@ -324,6 +328,7 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
 
                     <div className="flex-1 bg-[#2A3942] rounded-full px-4 py-2">
                         <input
+                            ref={messageInputRef}
                             type="text"
                             placeholder={
                                 persona

@@ -31,7 +31,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    const filters = ["All", "Online"];
+    const filters = ["All", "Featured"];
 
     // Load personas on component mount
     useEffect(() => {
@@ -62,8 +62,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 .toLowerCase()
                 .includes(searchQuery.toLowerCase());
 
-        if (activeFilter === "Online") {
-            return matchesSearch && persona.isOnline;
+        if (activeFilter === "Featured") {
+            return matchesSearch && persona.isFeatured;
         }
 
         return matchesSearch;
@@ -106,7 +106,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#AEBAC1]" />
                         <input
                             type="text"
-                            placeholder="Search personas..."
+                            placeholder="Search user..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full bg-[#202C33] text-white pl-10 pr-4 py-2 rounded-lg border-none outline-none focus:bg-[#2A3942] transition-colors"
@@ -137,7 +137,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         <div className="flex items-center justify-center p-8">
                             <RefreshCw className="w-6 h-6 text-[#AEBAC1] animate-spin" />
                             <span className="text-[#AEBAC1] ml-2">
-                                Loading personas...
+                                Loading chat...
                             </span>
                         </div>
                     ) : error ? (

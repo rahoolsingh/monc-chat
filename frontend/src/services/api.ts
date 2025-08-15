@@ -83,7 +83,7 @@ const withRetry = async <T>(
             }
 
             console.warn(
-                `⚠️ API request failed (attempt ${attempt}/${maxRetries}):`,
+                `API request failed (attempt ${attempt}/${maxRetries}):`,
                 error
             );
             await new Promise((resolve) =>

@@ -80,7 +80,7 @@ app.get("/api/personas", (req, res) => {
             profileImage: data.profileImage,
             description: `Chat with ${data.name}`, // Simple description
             isOnline: true,
-            filterTags: data.filterTags,
+            isFeatured: data.isFeatured,
         }));
 
         res.json({
@@ -128,8 +128,8 @@ app.get("/api/personas/:id", (req, res) => {
                 name: persona.name,
                 profileImage: persona.profileImage,
                 description: `Chat with ${persona.name}`,
-                isOnline: Math.random() > 0.3, // Random online status for demo
-                systemPrompt: persona.persona, // Include system prompt for AI context
+                isOnline: true,
+                systemPrompt: persona.persona,
             },
         });
     } catch (error) {
@@ -217,7 +217,7 @@ app.post("/api/chat/:personaId", async (req, res) => {
             model: "gpt-4o-mini",
             messages: messages,
             max_tokens: 1000,
-            temperature: 0.7,
+            temperature: 0.6,
         });
 
         const aiResponse = response.choices[0].message.content;

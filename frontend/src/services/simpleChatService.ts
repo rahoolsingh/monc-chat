@@ -74,7 +74,7 @@ export const sendMessageSimple = async (
                                 }
                             }
                         } catch (parseError) {
-                            console.warn("⚠️ Failed to parse SSE data:", line);
+                            console.warn("Failed to parse SSE data:", line);
                         }
                     }
                 }

@@ -136,7 +136,7 @@ export const preloadPersonas = async (): Promise<void> => {
     try {
         await fetchPersonas();
     } catch (error) {
-        console.warn("⚠️ Failed to preload personas:", error);
+        console.warn("Failed to preload personas:", error);
         // Don't throw error for preloading failure
     }
 };

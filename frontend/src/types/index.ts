@@ -14,6 +14,7 @@ export interface Persona {
     profileImage: string;
     description: string;
     isOnline: boolean;
+    isFeatured: boolean;
     systemPrompt?: string; // Only included in detailed persona response
 }
 
